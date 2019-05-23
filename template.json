@@ -28,8 +28,7 @@
     },
     {
       "type": "inspec",
-      "profile": "test/integration/default",
-      "inspec_env_vars": [ "TEST_NGINX_VER={{user `nginx_ver`}}" ]
+      "profile": "test/integration/default"
     }
   ],
   "post-processors": [
