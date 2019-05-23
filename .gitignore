@@ -3,3 +3,9 @@ packer_cache/
 
 # For built boxes
 *.box
+
+.ruby-version
+Gemfile.lock
+inspec.lock
+
+output-ubuntu-1604-nginx/
