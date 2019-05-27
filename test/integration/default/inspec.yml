@@ -1,0 +1,7 @@
+---
+name: default
+title: Nginx installation
+summary: Test suite for basic check of Nginx installation
+version: 0.1.0
+supports:
+  - os-family: linux
