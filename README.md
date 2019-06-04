@@ -36,11 +36,11 @@ Script usage:
 
 `usage run.sh <nginx_version> <source_box> <source_box_version> [<dst_vc_box> <dsc_vc_box_ver>]`
 
-`nginx_version` - version of nginx to install or 'auto'
-`source_box_name` - vagrant cloud box 'my-vc-user/my-box'
-`source_box_version` - version of the VC box or 'current'
-`dst_vc_box` - (optional) the vagrant cloud destination box
-`dsc_vc_box_ver` - (required if dst_vc_box set) the vagrant cloud destination box version
+* `nginx_version` - version of nginx to install or 'auto'
+* `source_box_name` - vagrant cloud box 'my-vc-user/my-box'
+* `source_box_version` - version of the VC box or 'current'
+* `dst_vc_box` - (optional) the vagrant cloud destination box
+* `dsc_vc_box_ver` - (required if dst_vc_box set) the vagrant cloud destination box version
 
 ## Running the project
 
