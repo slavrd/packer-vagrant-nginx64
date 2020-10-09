@@ -28,7 +28,10 @@
     },
     {
       "type": "inspec",
-      "profile": "test/integration/default"
+      "profile": "test/integration/default",
+      "extra_arguments": [
+        "--chef-license=accept-silent"
+      ]
     }
   ],
   "post-processors": [
