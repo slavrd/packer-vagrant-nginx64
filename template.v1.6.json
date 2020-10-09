@@ -1,0 +1,48 @@
+{
+  "builders": [
+    {
+      "add_force": true,
+      "communicator": "ssh",
+      "name": "{{user `build_name`}}",
+      "provider": "virtualbox",
+      "skip_add": "{{user `v_skip_add`}}",
+      "source_path": "{{user `vc_box`}}",
+      "teardown_method": "destroy",
+      "type": "vagrant"
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "box_tag": "{{user `dst_vc_box`}}",
+        "type": "vagrant-cloud",
+        "version": "{{user `dst_vc_box_ver`}}",
+        "version_description": "Box based on {{user `vc_box`}} ({{user `vc_box_ver`}}) with installed Nginx {{user `nginx_ver`}}"
+      }
+    ]
+  ],
+  "provisioners": [
+    {
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash {{.Path}} {{user `nginx_ver`}}",
+      "script": "scripts/provision.sh",
+      "type": "shell"
+    },
+    {
+      "profile": "test/integration/default",
+      "type": "inspec",
+      "extra_arguments": [
+        "--chef-license=accept-silent"
+      ]
+    }
+  ],
+  "variables": {
+    "build_name": "ubuntu-1604-nginx",
+    "dst_vc_box": "{{env `DST_VC_BOX`}}",
+    "dst_vc_box_ver": "{{env `DST_VC_BOX_VER`}}",
+    "nginx_ver": "{{env `PKR_NGINX_VER`}}",
+    "v_skip_add": "false",
+    "vc_box": "{{env `VC_BOX_NAME`}}",
+    "vc_box_ver": "{{env `VC_BOX_VER`}}"
+  }
+}
+
