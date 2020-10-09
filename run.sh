@@ -61,7 +61,7 @@ if [ "$VC_BOX_VER" == "current" ]; then
 fi
 
 # check if box is added
-vagrant box list | grep -i "$VC_BOX_NAME (virtualbox, $VC_BOX_VER)" >>/dev/null
+vagrant box list | grep -i "$VC_BOX_NAME.*(virtualbox, $VC_BOX_VER)" >>/dev/null
 if [ "$?" != 0 ]; then
     V_SKIP_ADD="false"
 else
@@ -72,17 +72,17 @@ fi
 # execute packer
 if [ $# -eq 3 ]; then
 
-    packer validate -except vagrant-cloud,shell-local template.json && \
+    packer validate -except vagrant-cloud,shell-local template.v1.6.json && \
         packer build \
             -var "v_skip_add=$V_SKIP_ADD" \
             -except vagrant-cloud,shell-local \
-            template.json
+            template.v1.6.json
 
 elif [ $# -eq 5 ]; then
 
-    packer validate template.json && \
+    packer validate template.v1.6.json && \
         packer build \
             -var "v_skip_add=$V_SKIP_ADD" \
-            template.json
+            template.v1.6.json
 
 fi
